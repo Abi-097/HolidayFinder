@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Public Holiday Finder</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Dark Mode Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen">
+
+  <div class="max-w-6xl mx-auto p-4 text-gray-900 dark:text-gray-100">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+
+      <h1 class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+        Public Holiday Finder
+      </h1>
+
+      <!-- Dark Mode -->
+      <button id="themeToggle"
+        class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-800">
+        🌙 Dark
+      </button>
+
+    </div>
+
+    <!-- Search Panel -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 mb-6">
+
+      <div class="grid grid-cols-1 md:grid-cols-6 gap-3">
+
+        <!-- Country -->
+        <select id="countrySelect" class="border rounded px-2 py-2 dark:bg-gray-700">
+           <option value="AL">Albania</option>
+                    <option value="AD">Andorra</option>
+                    <option value="AR">Argentina</option>
+                    <option value="AM">Armenia</option>
+                    <option value="AU">Australia</option>
+                    <option value="AT">Austria</option>
+                    <option value="BS">Bahamas</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BY">Belarus</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BZ">Belize</option>
+                    <option value="BJ">Benin</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BA">Bosnia and Herzegovina</option>
+                    <option value="BW">Botswana</option>
+                    <option value="BR">Brazil</option>
+                    <option value="BG">Bulgaria</option>
+                    <option value="CA">Canada</option>
+                    <option value="CL">Chile</option>
+                    <option value="CN">China</option>
+                    <option value="CO">Colombia</option>
+                    <option value="CG">Congo</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="HR">Croatia</option>
+                    <option value="CU">Cuba</option>
+                    <option value="CY">Cyprus</option>
+                    <option value="CZ">Czechia</option>
+                    <option value="CD">DR Congo</option>
+                    <option value="DK">Denmark</option>
+                    <option value="DO">Dominican Republic</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="EG">Egypt</option>
+                    <option value="SV">El Salvador</option>
+                    <option value="EE">Estonia</option>
+                    <option value="FO">Faroe Islands</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR">France</option>
+                    <option value="GA">Gabon</option>
+                    <option value="GM">Gambia</option>
+                    <option value="GE">Georgia</option>
+                    <option value="DE">Germany</option>
+                    <option value="GH">Ghana</option>
+                    <option value="GI">Gibraltar</option>
+                    <option value="GR">Greece</option>
+                    <option value="GL">Greenland</option>
+                    <option value="GD">Grenada</option>
+                    <option value="GT">Guatemala</option>
+                    <option value="GG">Guernsey</option>
+                    <option value="GY">Guyana</option>
+                    <option value="HT">Haiti</option>
+                    <option value="HN">Honduras</option>
+                    <option value="HK">Hong Kong</option>
+                    <option value="HU">Hungary</option>
+                    <option value="IS">Iceland</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IM">Isle of Man</option>
+                    <option value="IT">Italy</option>
+                    <option value="JM">Jamaica</option>
+                    <option value="JP">Japan</option>
+                    <option value="JE">Jersey</option>
+                    <option value="KZ">Kazakhstan</option>
+                    <option value="KE">Kenya</option>
+                    <option value="LV">Latvia</option>
+                    <option value="LS">Lesotho</option>
+                    <option value="LI">Liechtenstein</option>
+                    <option value="LT">Lithuania</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MG">Madagascar</option>
+                    <option value="MT">Malta</option>
+                    <option value="MX">Mexico</option>
+                    <option value="MD">Moldova</option>
+                    <option value="MC">Monaco</option>
+                    <option value="MN">Mongolia</option>
+                    <option value="ME">Montenegro</option>
+                    <option value="MS">Montserrat</option>
+                    <option value="MA">Morocco</option>
+                    <option value="MZ">Mozambique</option>
+                    <option value="NA">Namibia</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NI">Nicaragua</option>
+                    <option value="NE">Niger</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="MK">North Macedonia</option>
+                    <option value="NO">Norway</option>
+                    <option value="PA">Panama</option>
+                    <option value="PG">Papua New Guinea</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH">Philippines</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="RO">Romania</option>
+                    <option value="RU">Russia</option>
+                    <option value="SM">San Marino</option>
+                    <option value="RS">Serbia</option>
+                    <option value="SC">Seychelles</option>
+                    <option value="SG">Singapore</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="KR">South Korea</option>
+                    <option value="ES">Spain</option>
+                    <option value="SR">Suriname</option>
+                    <option value="SJ">Svalbard and Jan Mayen</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="TN">Tunisia</option>
+                    <option value="TR">Türkiye</option>
+                    <option value="UA">Ukraine</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="VA">Vatican City</option>
+                    <option value="VE">Venezuela</option>
+                    <option value="VN">Vietnam</option>
+                    <option value="ZW">Zimbabwe</option>
+                    <option value="AX">Åland Islands</option>
+        </select>
+
+        <!-- Year -->
+        <input type="number" id="yearInput"
+          class="border rounded px-2 py-2 dark:bg-gray-700"
+          value="2024" min="1900" max="2100">
+
+        <!-- Month Filter -->
+        <select id="monthFilter" class="border rounded px-2 py-2 dark:bg-gray-700">
+          <option value="">All Months</option>
+          <option value="0">Jan</option>
+          <option value="1">Feb</option>
+          <option value="2">Mar</option>
+          <option value="3">Apr</option>
+          <option value="4">May</option>
+          <option value="5">Jun</option>
+          <option value="6">Jul</option>
+          <option value="7">Aug</option>
+          <option value="8">Sep</option>
+          <option value="9">Oct</option>
+          <option value="10">Nov</option>
+          <option value="11">Dec</option>
+        </select>
+
+        <!-- Type Filter -->
+        <select id="typeFilter" class="border rounded px-2 py-2 dark:bg-gray-700">
+          <option value="">All Types</option>
+          <option value="Public">Public</option>
+          <option value="Optional">Optional</option>
+          <option value="School">School</option>
+          <option value="Authorities">Authorities</option>
+        </select>
+
+        <!-- Search -->
+        <button id="searchBtn"
+          class="bg-blue-600 text-white rounded hover:bg-blue-700">
+          Search
+        </button>
+
+        <!-- Export -->
+        <button id="exportBtn"
+          class="bg-green-600 text-white rounded hover:bg-green-700">
+          Export CSV
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Loading -->
+    <div id="loading" class="hidden text-center mb-4">
+      Loading...
+    </div>
+
+    <!-- Error -->
+    <div id="errorMessage" class="hidden text-center text-red-500 mb-4"></div>
+
+    <!-- Info -->
+    <div class="flex justify-between mb-4">
+
+      <p>
+        Total Holidays:
+        <span id="totalCount" class="font-bold">0</span>
+      </p>
+
+      <button id="clearHistory"
+        class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+        Clear History
+      </button>
+
+    </div>
+
+    <!-- Results -->
+    <div id="holidayResults"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
+
+    <!-- History -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded p-4">
+
+      <h2 class="text-lg font-semibold mb-2">Search History</h2>
+
+      <ul id="historyList" class="space-y-1 text-blue-500 cursor-pointer"></ul>
+
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script>
+
+    const countrySelect = document.getElementById("countrySelect");
+    const yearInput = document.getElementById("yearInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const exportBtn = document.getElementById("exportBtn");
+
+    const monthFilter = document.getElementById("monthFilter");
+    const typeFilter = document.getElementById("typeFilter");
+
+    const holidayResults = document.getElementById("holidayResults");
+    const loading = document.getElementById("loading");
+    const errorMessage = document.getElementById("errorMessage");
+
+    const totalCount = document.getElementById("totalCount");
+    const historyList = document.getElementById("historyList");
+
+    const themeToggle = document.getElementById("themeToggle");
+    const clearHistory = document.getElementById("clearHistory");
+
+    let history = [];
+    let currentHolidays = [];
+
+    /* ------------------------------
+      Dark Mode
+    ------------------------------ */
+    themeToggle.addEventListener("click", () => {
+
+      document.documentElement.classList.toggle("dark");
+
+      themeToggle.textContent =
+        document.documentElement.classList.contains("dark")
+          ? "☀️ Light"
+          : "🌙 Dark";
+    });
+
+    /* ------------------------------
+      Loading
+    ------------------------------ */
+    function showLoading(show) {
+      loading.classList.toggle("hidden", !show);
+    }
+
+    /* ------------------------------
+      Fetch API
+    ------------------------------ */
+    async function fetchHolidays(country, year) {
+
+      const url =
+        `https://date.nager.at/api/v3/PublicHolidays/${year}/${country}`;
+
+      try {
+
+        showLoading(true);
+        errorMessage.classList.add("hidden");
+
+        const res = await fetch(url);
+
+        if (!res.ok) throw new Error("API Error");
+
+        const data = await res.json();
+
+        showLoading(false);
+
+        return data;
+
+      } catch (err) {
+
+        showLoading(false);
+
+        errorMessage.textContent =
+          "Failed to load data. Try again.";
+
+        errorMessage.classList.remove("hidden");
+
+        return null;
+      }
+    }
+
+    /* ------------------------------
+      Filter Data
+    ------------------------------ */
+    function applyFilters(data) {
+
+      let filtered = [...data];
+
+      // Month
+      if (monthFilter.value !== "") {
+
+        filtered = filtered.filter(h => {
+
+          return new Date(h.date).getMonth() ==
+            monthFilter.value;
+        });
+      }
+
+      // Type
+      if (typeFilter.value !== "") {
+
+        filtered = filtered.filter(h =>
+
+          h.types.includes(typeFilter.value)
+        );
+      }
+
+      return filtered;
+    }
+
+    /* ------------------------------
+      Display Holidays
+    ------------------------------ */
+    function displayHolidays(data) {
+
+      holidayResults.innerHTML = "";
+
+      totalCount.textContent = data.length;
+
+      if (data.length === 0) {
+
+        holidayResults.innerHTML =
+          `<p class="col-span-full text-center">
+          No holidays found.
+          </p>`;
+
+        return;
+      }
+
+      const today = new Date();
+
+      data.forEach(h => {
+
+        const dateObj = new Date(h.date);
+
+        const isUpcoming = dateObj >= today;
+
+        const day =
+          dateObj.toLocaleDateString("en-US",
+            { weekday: "long" });
+
+        const card = document.createElement("div");
+
+        card.className =
+          `p-4 rounded shadow bg-white dark:bg-gray-800
+          ${isUpcoming ? "border-2 border-green-400" : ""}`;
+
+        card.innerHTML = `
+
+          <h3 class="font-bold text-blue-600 dark:text-blue-400">
+            ${h.name}
+          </h3>
+
+          <p>Date: ${h.date}</p>
+          <p>Local: ${h.localName || "N/A"}</p>
+          <p>Country: ${h.countryCode}</p>
+          <p>Type: ${h.types.join(", ")}</p>
+          <p>Day: ${day}</p>
+
+          ${isUpcoming ?
+            `<p class="text-green-500 font-semibold">
+              Upcoming
+            </p>` : ""}
+        `;
+
+        holidayResults.appendChild(card);
+
+      });
+    }
+
+    /* ------------------------------
+      Search
+    ------------------------------ */
+    async function search() {
+
+      const country = countrySelect.value;
+      const year = yearInput.value;
+
+      if (!year) return;
+
+      const data = await fetchHolidays(country, year);
+
+      if (!data) return;
+
+      currentHolidays = applyFilters(data);
+
+      displayHolidays(currentHolidays);
+
+      addHistory(country, year);
+    }
+
+    /* ------------------------------
+      History
+    ------------------------------ */
+    function addHistory(country, year) {
+
+      const item = `${country}-${year}`;
+
+      if (!history.includes(item)) {
+
+        history.push(item);
+        renderHistory();
+      }
+    }
+
+    function renderHistory() {
+
+      historyList.innerHTML = "";
+
+      history.forEach(h => {
+
+        const li = document.createElement("li");
+
+        li.textContent = h;
+        li.className = "hover:underline";
+
+        li.onclick = () => {
+
+          const [c, y] = h.split("-");
+
+          countrySelect.value = c;
+          yearInput.value = y;
+
+          search();
+        };
+
+        historyList.appendChild(li);
+      });
+    }
+
+    clearHistory.onclick = () => {
+
+      history = [];
+      renderHistory();
+    };
+
+    /* ------------------------------
+      Export CSV
+    ------------------------------ */
+    function exportCSV() {
+
+      if (currentHolidays.length === 0) return;
+
+      let csv =
+        "Name,Date,LocalName,Country,Type,Day\n";
+
+      currentHolidays.forEach(h => {
+
+        const day =
+          new Date(h.date)
+            .toLocaleDateString("en-US",
+              { weekday: "long" });
+
+        csv += `"${h.name}","${h.date}",
+        "${h.localName}","${h.countryCode}",
+        "${h.types.join("|")}","${day}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv" });
+
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+
+      a.href = url;
+      a.download = "holidays.csv";
+      a.click();
+    }
+
+    /* ------------------------------
+      Events
+    ------------------------------ */
+    searchBtn.onclick = search;
+
+    exportBtn.onclick = exportCSV;
+
+    monthFilter.onchange = () => {
+
+      displayHolidays(
+        applyFilters(currentHolidays)
+      );
+    };
+
+    typeFilter.onchange = () => {
+
+      displayHolidays(
+        applyFilters(currentHolidays)
+      );
+    };
+
+  </script>
+
+</body>
+
+</html>
